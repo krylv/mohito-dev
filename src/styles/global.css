@@ -1,0 +1,17 @@
+@import url('https://fonts.googleapis.com/css2?family=Asimovian&display=swap');
+@import "tailwindcss";
+@import "./utility.css";
+
+
+@theme{
+	--font-family-asimovian:'Asimovian', sans-serif;	
+	--bg-color-black:#111111;
+	--color-white:#f5f5f5;
+}
+
+body {
+  font-family: var(--font-family-asimovian);
+  background-color:var(--bg-color-black);
+  color:var(--color-white)
+  
+}
