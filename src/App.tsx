@@ -1,12 +1,14 @@
 import "src/styles/global.css";
 import Navbar from "./components/Navbar";
+import Hero from "./components/Hero";
 
 function App() {
-	return (
-		<main>
-			<Navbar />
-		</main>
-	);
+  return (
+    <main>
+      <Navbar />
+      <Hero />
+    </main>
+  );
 }
 
 export default App;
