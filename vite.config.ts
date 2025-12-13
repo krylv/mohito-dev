@@ -1,15 +1,16 @@
-import { defineConfig } from 'vite'
-import react from '@vitejs/plugin-react-swc'
-import path from 'path'
-import tailwindcss from '@tailwindcss/vite'
+import path from "node:path";
+import tailwindcss from "@tailwindcss/vite";
+import react from "@vitejs/plugin-react-swc";
+import { defineConfig } from "vite";
 
 // https://vite.dev/config/
 export default defineConfig({
-  plugins: [react(),tailwindcss()],
-  resolve:{
-   alias: {
-      'src': path.resolve(__dirname, './src'),
-      'lib': path.resolve(__dirname, './lib'),
-    },
-  }
-})
+	plugins: [react(), tailwindcss()],
+	resolve: {
+		alias: {
+			src: path.resolve(__dirname, "./src"),
+			lib: path.resolve(__dirname, "./lib"),
+			constants: path.resolve(__dirname, "./constants"),
+		},
+	},
+});

@@ -1,11 +1,12 @@
-import {gsap} from 'lib'
-import 'src/styles/global.css'
+import "src/styles/global.css";
+import Navbar from "./components/Navbar";
 
 function App() {
-
-  return (
-    <div className='flex-center h-screen'>Hello,GSAP</div>
-  )
+	return (
+		<main>
+			<Navbar />
+		</main>
+	);
 }
 
-export default App
+export default App;
