@@ -1,1 +1,1 @@
-export {ScrollTrigger,SplitText,gsap} from './gsap'
+export { ScrollTrigger, SplitText, gsap } from "./gsap";
