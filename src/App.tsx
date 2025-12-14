@@ -9,7 +9,7 @@ function App() {
 			<main>
 				<Navbar />
 				<Hero />
-				<div className="h-[500px] bg-black"></div>
+				<div className="h-dvh bg-black"></div>
 			</main>
 		</SmoothScroll>
 	);

@@ -1,8 +1,13 @@
 import { useGSAP } from "@gsap/react";
 import { gsap, SplitText } from "lib/gsap";
+import { useRef } from "react";
+import { useMediaQuery } from "react-responsive";
 
 const Hero = () => {
+	const videoRef = useRef<HTMLVideoElement>(null);
+	const isMobile = useMediaQuery({ maxWidth: 767 });
 	useGSAP(() => {
+		if (!videoRef.current) return;
 		const heroSplit = new SplitText(".title", { type: "chars,words" });
 		const paragraphSplit = new SplitText(".sub-content", {
 			type: "lines",
@@ -50,41 +55,70 @@ const Hero = () => {
 				},
 				0,
 			);
+
+		const startValue = isMobile ? "top 50%" : "center 60%";
+		const endValue = isMobile ? "120% top" : "bottom top";
+
+		const tl = gsap.timeline({
+			scrollTrigger: {
+				trigger: "video",
+				start: startValue,
+				end: endValue,
+				scrub: true,
+				pin: true,
+			},
+		});
+		videoRef.current.onloadedmetadata = () => {
+			tl.to(videoRef.current, {
+				currentTime: videoRef.current?.duration,
+			});
+		};
 	}, []);
 
 	return (
-		<section id="hero" className="overflow-hidden">
-			<div className="noisy " />
-			<h1 className="title">MOJITO</h1>
-			<img
-				alt="left-leaf"
-				src="/images/hero-left-leaf.png"
-				className="left-leaf"
-			/>
-			<img
-				alt="right-leaf"
-				src="/images/hero-right-leaf.png"
-				className="right-leaf"
-			/>
-			<div className="body">
-				<div className="content">
-					<div className="space-y-5 hidden md:block">
-						<p>Coll.Crisp.Classic</p>
-						<p className="sub-content">
-							Sip the Spirit <br /> of Summer
-						</p>
-					</div>
-					<div className="view-cocktails">
-						<p className="sub-content">
-							Every cocktail on our menu is a blend of premium ingredients,
-							creative flair, and timless recipes - designed to delight your
-							senses.
-						</p>
-						<a href="#cocktails">View cockatils</a>
+		<div className="relative">
+			<section id="hero" className="overflow-hidden">
+				<div className="noisy " />
+				<h1 className="title">MOJITO</h1>
+				<img
+					alt="left-leaf"
+					src="/images/hero-left-leaf.png"
+					className="left-leaf"
+				/>
+				<img
+					alt="right-leaf"
+					src="/images/hero-right-leaf.png"
+					className="right-leaf"
+				/>
+				<div className="body">
+					<div className="content">
+						<div className="space-y-5 hidden md:block">
+							<p>Coll.Crisp.Classic</p>
+							<p className="sub-content">
+								Sip the Spirit <br /> of Summer
+							</p>
+						</div>
+						<div className="view-cocktails">
+							<p className="sub-content">
+								Every cocktail on our menu is a blend of premium ingredients,
+								creative flair, and timless recipes - designed to delight your
+								senses.
+							</p>
+							<a href="#cocktails">View cockatils</a>
+						</div>
 					</div>
 				</div>
+			</section>
+			<div className="video absolute inset-0">
+				<video
+					ref={videoRef}
+					muted
+					playsInline
+					preload="auto"
+					src="/videos/output.mp4"
+				/>
 			</div>
-		</section>
+		</div>
 	);
 };
 
