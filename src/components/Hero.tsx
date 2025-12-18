@@ -99,7 +99,7 @@ const Hero = () => {
 							</p>
 						</div>
 						<div className="view-cocktails">
-							<p className="sub-content">
+							<p className="sub-content text-[12px]">
 								Every cocktail on our menu is a blend of premium ingredients,
 								creative flair, and timless recipes - designed to delight your
 								senses.
