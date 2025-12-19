@@ -9,7 +9,6 @@ const About = () => {
 			scrollTrigger: {
 				trigger: "#about",
 				start: "top center",
-				markers: true,
 			},
 		});
 
