@@ -4,7 +4,7 @@ import type { FC, PropsWithChildren } from "react";
 
 const SmoothScroll: FC<PropsWithChildren> = ({ children }) => {
 	useGSAP(() => {
-		let smoother = ScrollSmoother.create({
+		ScrollSmoother.create({
 			wrapper: "#smooth-wrapper",
 			content: "#smooth-content",
 		});
