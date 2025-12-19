@@ -4,28 +4,27 @@ import { gsap } from "lib/gsap";
 
 const Navbar = () => {
 	useGSAP(() => {
-		const navTween = gsap.timeline({
-			scrollTrigger: {
-				trigger: "nav",
-				start: "bottom top",
-			},
-		});
-
-		navTween.fromTo(
+		gsap.fromTo(
 			"nav",
-			{ backgroundColor: "transparent" },
 			{
-				backgroundColor: "#00000050",
-				filter: "blur(10px)",
-				duration: 1,
-				ease: "power1.inOut",
+				backgroundColor: "rgba(0, 0, 0, 0)",
+			},
+			{
+				backgroundColor: "rgba(0, 0, 0, 0.5)",
+				ease: "none",
+				scrollTrigger: {
+					trigger: "nav",
+					start: "bottom top",
+					end: "top top",
+					scrub: 1,
+				},
 			},
 		);
 	});
 	return (
 		<nav>
-			<div className="flex justify-between flex-col gap-y-3">
-				<a href="#home" className="flex  justify-center items-center gap-2">
+			<div>
+				<a href="#home" className="flex items-center gap-2">
 					<img src="/images/logo.png" alt="logo" className="size-8" />
 					<p className="text-[2rem]">Velvet Pour</p>
 				</a>
