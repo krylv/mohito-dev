@@ -17,7 +17,12 @@ const navLinks = [
 	},
 ];
 
-const cocktailLists = [
+const cocktailLists: {
+	name: string;
+	country: string;
+	detail: string;
+	price: string;
+}[] = [
 	{
 		name: "Chapel Hill Shiraz",
 		country: "AU",
