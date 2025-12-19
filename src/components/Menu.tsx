@@ -6,7 +6,6 @@ import { useRef, useState } from "react";
 
 const Menu = () => {
 	const [currentCocktail, setCurrentCocktail] = useState(0);
-	const prevSlideRef = useRef<number>(0);
 	const isRightDirectionRef = useRef<boolean>(true);
 
 	useGSAP(() => {
@@ -111,12 +110,13 @@ const Menu = () => {
 
 	const totailCocktails = sliderLists.length;
 
-	const goToSlide = (id: number) => {
-		prevSlideRef.current = currentCocktail;
-
+	const goToSlide = (
+		id: number,
+		direction: "forward" | "backward" = "forward",
+	) => {
+		isRightDirectionRef.current = direction === "forward";
 		const newId = (id + totailCocktails) % totailCocktails;
 
-		isRightDirectionRef.current = newId > prevSlideRef.current;
 		setCurrentCocktail(newId);
 	};
 
@@ -164,7 +164,7 @@ const Menu = () => {
 					<button
 						type="button"
 						className="text-left"
-						onClick={() => goToSlide(currentCocktail - 1)}
+						onClick={() => goToSlide(currentCocktail - 1, "backward")}
 					>
 						<span>{prevCocktail.name}</span>
 						<img
