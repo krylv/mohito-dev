@@ -1,8 +1,8 @@
 "use client";
 import { useGSAP } from "@gsap/react";
-import { sliderLists } from "constants/index";
 import { gsap } from "lib/gsap";
 import { useRef, useState } from "react";
+import { sliderLists } from "../../constants/Index";
 
 const Menu = () => {
 	const [currentCocktail, setCurrentCocktail] = useState(0);

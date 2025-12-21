@@ -1,6 +1,6 @@
 import { useGSAP } from "@gsap/react";
-import { openingHours, socials, storeInfo } from "constants/index";
 import { gsap } from "lib/gsap";
+import { openingHours, socials, storeInfo } from "../../constants/Index";
 
 const Footer = () => {
 	useGSAP(() => {
