@@ -2,6 +2,7 @@ import "src/styles/global.css";
 import About from "./components/About";
 import Art from "./components/Art";
 import Cocktails from "./components/Cocktails";
+import Footer from "./components/Footer";
 import Hero from "./components/Hero";
 import Menu from "./components/Menu";
 import Navbar from "./components/Navbar";
@@ -17,6 +18,7 @@ function App() {
 				<About />
 				<Art />
 				<Menu />
+				<Footer />
 			</main>
 		</SmoothScroll>
 	);
