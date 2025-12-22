@@ -5,7 +5,7 @@ import { useRef, useState } from "react";
 import { sliderLists } from "../../constants/Index";
 
 const Menu = () => {
-	const [currentCocktail, setCurrentCocktail] = useState(0);
+	const [currentCocktail, setCurrentCocktail] = useState(1);
 	const isRightDirectionRef = useRef<boolean>(true);
 
 	useGSAP(() => {
@@ -115,14 +115,25 @@ const Menu = () => {
 		direction: "forward" | "backward" = "forward",
 	) => {
 		isRightDirectionRef.current = direction === "forward";
-		const newId = (id + totailCocktails) % totailCocktails;
+		const minId = 1;
+		const newId = (id + totailCocktails + 1) % (totailCocktails + 1);
 
-		setCurrentCocktail(newId);
+		let formatteId = newId;
+
+		if (newId < minId && direction === "forward") {
+			formatteId = minId;
+		}
+
+		if (newId < minId && direction === "backward") {
+			formatteId = totailCocktails;
+		}
+
+		setCurrentCocktail(formatteId);
 	};
 
 	const getCocktailAt = (indexOffset: number) => {
 		return sliderLists[
-			(currentCocktail + indexOffset + totailCocktails) % totailCocktails
+			(currentCocktail - 1 + indexOffset + totailCocktails) % totailCocktails
 		];
 	};
 
@@ -145,14 +156,14 @@ const Menu = () => {
 				Cocktail Menu
 			</h2>
 			<nav className="cocktail-tabs" aria-label="Cocktail Navigation">
-				{sliderLists.map((cocktail, idx) => {
-					const isActive = idx === currentCocktail;
+				{sliderLists.map((cocktail) => {
+					const isActive = cocktail.id === currentCocktail;
 					return (
 						<button
 							type="button"
 							key={cocktail.id}
 							className={`${isActive ? "text-white border-white" : "text-white/50 border-white/50"}`}
-							onClick={() => goToSlide(idx)}
+							onClick={() => goToSlide(cocktail.id)}
 						>
 							{cocktail.name}
 						</button>

@@ -10,7 +10,7 @@ const SmoothScroll: FC<PropsWithChildren> = ({ children }) => {
 		});
 	}, []);
 	return (
-		<div id="smooth-wrapper">
+		<div id="smooth-wrapper" className="lock-scroll">
 			<div id="smooth-content">{children}</div>
 		</div>
 	);

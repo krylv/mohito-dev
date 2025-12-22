@@ -370,3 +370,15 @@ body {
     }
   }
 }
+
+.loader{
+  position: fixed;
+  width: 100dvw;
+  height: 100dvh;
+  background-color: #ffffff;
+  z-index: 9999999;
+}
+
+.lock_scroll{
+  overflow: hidden;
+}
