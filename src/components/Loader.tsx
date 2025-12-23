@@ -13,7 +13,14 @@ const Loader = () => {
 		const circleTimeline = gsap.timeline({
 			repeat: 0,
 			onComplete: () => {
-				setCanEndAnimate(true);
+				gsap.to(".loader", {
+					opacity: 0,
+					duration: 1,
+					ease: "back.out",
+					onComplete: () => {
+						setCanEndAnimate(true);
+					},
+				});
 			},
 		});
 

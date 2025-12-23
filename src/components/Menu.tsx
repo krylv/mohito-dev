@@ -81,32 +81,38 @@ const Menu = () => {
 			);
 	}, [currentCocktail]);
 
-	useGSAP(() => {
-		const leafParallax = gsap.timeline({
-			scrollTrigger: {
-				trigger: "#menu",
-				start: "top center",
-				end: "center top",
-				scrub: true,
-			},
-		});
-
-		leafParallax
-			.to("#m-right-leaf", {
-				yPercent: 50,
-				rotate: 45,
-				xPercent: 20,
-			})
-			.to(
-				"#m-left-leaf",
-				{
-					yPercent: -50,
-					rotate: 45,
-					xPercent: -20,
+	useGSAP(
+		() => {
+			const leafParallax = gsap.timeline({
+				scrollTrigger: {
+					trigger: "#menu",
+					start: "top center",
+					end: "center top",
+					scrub: true,
 				},
-				0,
-			);
-	});
+				onUpdate: () => {
+					leafParallax.kill();
+				},
+			});
+
+			leafParallax
+				.to("#m-right-leaf", {
+					yPercent: 50,
+					rotate: 45,
+					xPercent: 20,
+				})
+				.to(
+					"#m-left-leaf",
+					{
+						yPercent: -50,
+						rotate: 45,
+						xPercent: -20,
+					},
+					0,
+				);
+		},
+		{ dependencies: [currentCocktail] },
+	);
 
 	const totailCocktails = sliderLists.length;
 
@@ -198,7 +204,12 @@ const Menu = () => {
 					</button>
 				</div>
 				<div className="cocktail">
-					<img src={cocktail.image} alt="" className="object-contain" />
+					<img
+						key={cocktail.id}
+						src={cocktail.image}
+						alt=""
+						className="object-contain"
+					/>
 				</div>
 				<div className="recipe">
 					<div className="info">

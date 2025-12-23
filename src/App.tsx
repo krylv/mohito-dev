@@ -11,18 +11,20 @@ import SmoothScroll from "./components/SmoothScroll";
 
 function App() {
 	return (
-		<SmoothScroll>
-			<main className="overflow-hidden">
-				<Loader />
-				<Navbar />
-				<Hero />
-				<Cocktails />
-				<About />
-				<Art />
-				<Menu />
-				<Footer />
-			</main>
-		</SmoothScroll>
+		<>
+			<Loader />
+			<SmoothScroll>
+				<main className="overflow-hidden">
+					<Navbar />
+					<Hero />
+					<Cocktails />
+					<About />
+					<Art />
+					<Menu />
+					<Footer />
+				</main>
+			</SmoothScroll>
+		</>
 	);
 }
 
