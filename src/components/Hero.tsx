@@ -1,11 +1,12 @@
 import { useGSAP } from "@gsap/react";
 import { gsap, SplitText } from "lib/gsap";
-import { useRef } from "react";
+import { type JSX, useRef } from "react";
 import { useMediaQuery } from "react-responsive";
 
 const Hero = () => {
 	const videoRef = useRef<HTMLVideoElement>(null);
 	const isMobile = useMediaQuery({ maxWidth: 767 });
+	const heroRef = useRef(null);
 	useGSAP(
 		() => {
 			if (!videoRef.current) return;
@@ -75,11 +76,11 @@ const Hero = () => {
 				});
 			};
 		},
-		{ scope: "#hero" },
+		{ scope: heroRef },
 	);
 
 	return (
-		<div className="relative">
+		<div className="relative" ref={heroRef}>
 			<section id="hero" className="overflow-hidden">
 				<div className="noisy " />
 				<h1 className="title">MOJITO</h1>

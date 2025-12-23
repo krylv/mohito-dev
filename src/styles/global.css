@@ -370,3 +370,19 @@ body {
     }
   }
 }
+
+.loader{
+  position: fixed;
+  width: 100dvw;
+  height: 100dvh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content:center;
+  background-color: var(--bg-color-black);
+  z-index: 9999999;
+}
+
+.lock_scroll{
+  overflow: hidden;
+}
